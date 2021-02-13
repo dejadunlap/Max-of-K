@@ -33,50 +33,24 @@ public class MaxOfK {
   }
 
 /**
-*divides the array into subsarrays
+*finds the max of each subsection
 *Precondition: myArray.length > 0, subLength > 0
 *Postcondintion: none
 *Parameters: None
 */
-  public void divideSection (){
+  public void findMax (){
     int start = 0;
-    int[] subArray = new int[subLength];
-    //divides the array into subsections
+    //checks if there's enough of the array to create a subsection
     while ((start + subLength - 1) < myArray.length)
     {
-      for (int i = start; i <= start + subLength -1; i++){
-        if (i == start){
-          subArray[0] = myArray[i];
-        } else if (i == start + 1){
-          subArray[1] = myArray[i];
-        } else {
-          subArray[2] = myArray[i];
-        }
-      }
-        //prints out the subsections
-        for (int i = 0; i < subArray.length; i++){
-          System.out.print(subArray[i] + " ");
-        } 
-      System.out.println();
-      findMax(subArray);
-      System.out.println();
-      start++;
-    }
-  } 
-
-/**
-*finds the greatest number in the subsection
-*Precondition: testArray.length > 0
-*Postcondintion: greatest
-*Parameters: int[] testArray
-*/
-    public void findMax (int[] testArray){
       int greatest = 0;
-      for (int i = 0; i < testArray.length; i++){
-        if (testArray[i] > greatest){
-          greatest = testArray[i];
+      for (int i = 0; i < subLength; i++){
+          if (myArray[i + start] > greatest){
+          greatest = myArray[i + start];
         }
       }
-      System.out.print("The greatest is: " + greatest);
+      System.out.print(greatest + " ");
+      start++;
+      }
     }
 }
